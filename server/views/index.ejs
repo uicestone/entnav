@@ -24,7 +24,7 @@
     <div class="header clearfix">
         <div class="logo-bg">
             <span class="expand fa fa-bars"></span>
-            <h1 class="logo"><a href="/">娱乐导航</h1>
+            <h1 class="logo"><a href="/">娱乐导航</a></h1>
         </div>
     </div>
     <!-- /.header-->
@@ -33,7 +33,7 @@
             <div class="side-content">
                 <ul class="left-nav">
                     <% navData['菜单'].forEach(nav => { %>
-                    <li class="no-child" id="icon"><a href="#design-resources"><i class="fa fa-<%= nav['图标'] %>"></i><%= nav['名称'] %></a><i class="open fa fa-plus"></i>
+                    <li class="no-child" id="icon"><a href="#<%= nav['名称'] %>"><i class="fa fa-<%= nav['图标'] %>"></i><%= nav['名称'] %></a><i class="open fa fa-plus"></i>
                         <ul>
                             <% navData[nav['名称']].forEach(item => { %>
                             <li><a href="<%= item['网址'] %>" onclick="return!1"><i class="fa fa-angle-right"></i><%= item['名称'] %></a></li>
