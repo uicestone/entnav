@@ -35,7 +35,7 @@
                     <% navData['菜单'].forEach(nav => { %>
                     <li class="no-child" id="icon"><a href="#<%= nav['名称'] %>"><i class="fa fa-<%= nav['图标'] %>"></i><%= nav['名称'] %></a><i class="open fa fa-plus"></i>
                         <ul>
-                            <% navData[nav['名称']].forEach(item => { %>
+                            <% navData[nav['名称']].filter(item => item['主导航']).forEach(item => { %>
                             <li><a href="<%= item['网址'] %>" onclick="return!1"><i class="fa fa-angle-right"></i><%= item['名称'] %></a></li>
                             <% }) %>
                         </ul>
@@ -102,8 +102,11 @@
                             <div class="panel-heading"><i class="fa fa-<%= nav['图标'] %>"></i> <%= nav['名称'] %></div>
                             <div class="panel-body">
                                 <dl class="row">
-                                    <!-- <dt class="col-sm-3 col-md-2 col-xs-4 row2"><a href="#nogo" target="_blank">左侧分区标题</a></dt> -->
-                                    <% navData[nav['名称']].forEach(item => { %>
+                                    <% let rowCat, curCat; navData[nav['名称']].forEach(item => { %>
+                                    <%  curCat = item['分类']; %>
+                                    <%  if (nav['名称'] !== '常用' && curCat !== rowCat){ rowCat = curCat; %>
+                                    <dt class="col-sm-3 col-md-2 col-xs-4 row2"><a href="#nogo" target="_blank"><%= rowCat %></a></dt>
+                                    <%  } %>
                                     <dd class="col-sm-3 col-md-2 col-xs-4"><a href="<%= item['网址'] %>" target="_blank"><i class="link-logo"></i><span class="link-title"><%= item['名称'] %></span><span class="link-info"><%= item['描述'] %></span></a></dd>
                                     <% }) %>
                                 </dl>
