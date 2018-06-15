@@ -33,7 +33,7 @@
             <div class="side-content">
                 <ul class="left-nav">
                     <% navData['菜单'].forEach(nav => { %>
-                    <li class="no-child" id="icon"><a href="#<%= nav['名称'] %>"><i class="fa fa-<%= nav['图标'] %>"></i><%= nav['名称'] %></a><i class="open fa fa-plus"></i>
+                    <li class="no-child" id="icon"><a href="#<%= sha1(nav['名称']) %>"><i class="fa fa-<%= nav['图标'] %>"></i><%= nav['名称'] %></a><i class="open fa fa-plus"></i>
                         <ul>
                             <% navData[nav['名称']].filter(item => item['主导航']).forEach(item => { %>
                             <li><a href="<%= item['网址'] %>" onclick="return!1"><i class="fa fa-angle-right"></i><%= item['名称'] %></a></li>
@@ -97,7 +97,7 @@
                     <!-- box-links-->
                     <div class="box-links">
                         <% navData['菜单'].forEach(nav => { %>
-                        <hr id="<%= nav['名称'] %>" />
+                        <hr id="<%= sha1(nav['名称']) %>" />
                         <div class="links panel">
                             <div class="panel-heading"><i class="fa fa-<%= nav['图标'] %>"></i> <%= nav['名称'] %></div>
                             <div class="panel-body">
@@ -180,6 +180,9 @@
                     <!-- /my-links -->
                 </div>
                 <!-- /box-main -->
+                <!-- 右边内容开始 -->
+                <iframe name="fame" id="fame" src="" style="display:none;height:100%;width:100%" frameborder="0"></iframe>
+                <!-- /右边内容开始 -->
             </div>
             <!-- /.right-side-->
         </div>

@@ -3,6 +3,7 @@
 const express      = require('express');
 const bodyParser   = require('body-parser');
 const compression  = require('compression');
+const sha1         = require('sha1');
 const app          = express();
 const router       = express.Router();
 const httpServer   = require('http').createServer(app);
@@ -18,7 +19,7 @@ app.use(compression());
 require(`${__dirname}/apis`)(app, router);
 
 app.get('/', async (req, res) => {
-  res.render('index.ejs', { navData: await shimoService.getNavData() });
+  res.render('index.ejs', { navData: await shimoService.getNavData(), sha1 });
 });
 
 app.use('/', express.static(`${__dirname}/../`));
