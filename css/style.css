@@ -2294,6 +2294,10 @@ li .label {
     padding-bottom: 0
 }
 
+.links dt.row1 {
+    clear: left
+}
+
 .links dt.row2 {
     min-height: 150px;
     clear: left

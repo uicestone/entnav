@@ -28,7 +28,12 @@ class ShimoService {
       }
       cells = this._cellsToRowArray(cells);
       cells = this._rowArrayToObjects(cells);
-      sheets[sheetMeta.name] = cells;
+      if (sheetMeta.name === '菜单') {
+        sheets[sheetMeta.name] = cells;
+      }
+      else {
+        sheets[sheetMeta.name] = this._objectsGroupBy(cells, '分类');
+      }
     });
 
     return sheets;
@@ -75,6 +80,21 @@ class ShimoService {
       return object;
     });
     return objects;
+  }
+
+  _objectsGroupBy (array, key) {
+    const groups = {};
+    array.forEach(item => {
+      let groupName = item[key] || '';
+
+      if (!groups[groupName]) {
+        groups[groupName] = [];
+      }
+
+      delete item[key];
+      groups[groupName].push(item);
+    });
+    return groups;
   }
 }
 
