@@ -19,7 +19,7 @@ app.use(compression());
 require(`${__dirname}/apis`)(app, router);
 
 app.get('/', async (req, res) => {
-  res.render('index.ejs', { navData: await shimoService.getNavData(), sha1 });
+  res.render(`${__dirname}/views/index.ejs`, { navData: await shimoService.getNavData(), sha1 });
 });
 
 app.use('/', express.static(`${__dirname}/../`));
